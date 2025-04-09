@@ -1,46 +1,143 @@
-# Real-Time Fraud Detection in Finance using Apache Spark & Kafka
+# Real-Time Fraud Detection in Finance using Apache Spark, Kafka, and Power BI
 
 ## Overview
 
-This project demonstrates a complete pipeline for **real-time fraud detection** in the financial domain using **Big Data technologies**. It simulates live transaction data using `Faker`, streams the data with `Kafka`, processes it with `Apache Spark Structured Streaming`, and uses `PySpark MLlib` to classify transactions as fraudulent or not.
+This project simulates a **real-time fraud detection pipeline** in the financial domain using a big data ecosystem. It generates synthetic transaction data using **Faker**, streams it through **Kafka**, processes it with **Apache Spark Structured Streaming**, detects fraud using a **PySpark ML model**, and visualizes suspicious activity in **Power BI**. The entire pipeline is orchestrated with **Airflow**.
 
-The project includes orchestration with `Airflow` and visualization with `Power BI`.
+All transaction data is simulated and does not represent real individuals or businesses.
 
 ---
 
-## Objectives
+## Project Goals
 
-- Simulate financial transaction streams using `Faker`.
-- Detect fraudulent transactions using a machine learning model in `PySpark`.
-- Process streaming data with low latency using `Kafka` and `Spark`.
-- Visualize fraud detection metrics in a BI dashboard.
-- Schedule model training and pipeline tasks with `Airflow`.
+- **Simulate Real-Time Financial Transactions:**  
+  Generate realistic synthetic transaction data using `Faker`, covering users, merchants, transaction metadata, and potential fraud indicators.
+
+- **Implement Streaming Architecture:**  
+  Build a real-time data pipeline using **Kafka** to ingest continuous transaction streams and **Apache Spark Structured Streaming** for scalable processing.
+
+- **Detect Fraudulent Behavior:**  
+  Apply machine learning models with **PySpark MLlib** to detect anomalies and classify transactions as fraudulent or legitimate in near real-time.
+
+- **Visualize Key Insights:**  
+  Provide a dynamic **Power BI dashboard** showing fraud alerts, high-risk users or merchants, transaction heatmaps, and financial trends.
+
+- **Orchestrate with Airflow:**  
+  Automate model training, batch scoring, and data workflows using **Apache Airflow** to ensure reliability and retrainability.
+
+- **Ensure Scalability & Reusability:**  
+  Design the system to be cloud-agnostic and modular for future integration with platforms like AWS or GCP and tools like Snowflake or dbt.
 
 ---
 
 ## Architecture
 
-Faker → Kafka → Spark Streaming → ML Model → Kafka / PostgreSQL → Power BI ↑ Airflow
+Faker → Kafka → Spark Structured Streaming → ML Model → Kafka or PostgreSQL → Power BI ↑ Airflow
 
-fraud-detection/
-│
-├── data_generator/
-│   └── faker_producer.py          # Simulates transactions and streams to Kafka
-│
-├── spark_streaming/
-│   └── fraud_detection_stream.py  # Spark Structured Streaming + ML model
-│
-├── airflow_dags/
-│   └── training_pipeline.py       # Airflow DAG for model training
-│
-├── model/
-│   └── train_model.py             # ML model training with PySpark
-│
-├── dashboards/
-│   └── fraud_dashboard.pbix       # Power BI dashboard
-│
-├── requirements.txt
-└── README.md
+(ADD DIAGRAM)
+
+---
+
+## Technology Stack
+
+| Component         | Tool / Framework           |
+|------------------|----------------------------|
+| Data Generation   | [Faker](https://faker.readthedocs.io/)       |
+| Messaging         | Apache Kafka               |
+| Streaming Engine  | Apache Spark (Structured Streaming) |
+| Machine Learning  | PySpark MLlib              |
+| Workflow Orchestration | Apache Airflow         |
+| Data Storage      | Kafka Topic / PostgreSQL (optional) |
+| Visualization     | Power BI                   |
+
+---
+
+## Data Used
+
+This project uses synthetic financial transaction data generated via the Faker Python library. The data simulates realistic behavior of users, merchants, and transactions — mimicking real-world online payment and banking activity — but does not include any actual private or sensitive user information.
+
+Faker continuously generates streaming data that mimics:
+
+- Customers making payments
+
+- Merchant identifiers
+
+- Timestamps and transaction metadata
+
+- Legitimate vs. fraudulent behavior patterns
+
+---
+
+## Data Model
+
+fact_transactions
+
+- transaction_id: Unique transaction ID
+
+- user_id: Reference to the user making the transaction
+
+- merchant_id: Reference to the merchant
+
+- timestamp: Time of transaction
+
+- amount: Transaction amount
+
+- currency: Currency used
+
+- device_ip: Device IP address
+
+- is_fraud: Fraud label (true/false)
+
+dim_users
+
+- user_id: Unique user ID
+
+- age: Age of user
+
+- gender: Gender
+
+- location: User location
+
+- signup_date: User registration date
+
+dim_merchants
+
+- merchant_id: Unique merchant ID
+
+- name: Merchant name
+
+- category: Business category
+
+- location: Merchant location
+
+- created_at: Merchant onboarding date
+
+---
+
+## Project Files
+
+1. `src/faker_producer.py` – Produces synthetic transaction data using Faker and streams it into Kafka.
+
+2. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.
+
+3. `src/train_model.py` – Script to train the fraud detection model using PySpark ML on historical (simulated) data.
+
+4. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.
+
+5. `models/fraud_model.pkl` – Serialized trained PySpark model for reuse in streaming pipeline.
+
+6. `config/kafka_config.json` – Kafka topic and broker configuration.
+
+7. `config/spark_config.yaml` – Spark app settings, including checkpointing and batch configs.
+
+8. `schema/postgres_schema.sql` – SQL script to create the fact_transactions and dim_users tables in PostgreSQL.
+
+9. `dashboards/fraud_dashboard.pbix` – Power BI report to visualize fraud detection metrics and transaction activity.
+
+------------------------------------
+
+
+
 
 
 
