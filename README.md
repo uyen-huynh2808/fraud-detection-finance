@@ -1,4 +1,4 @@
-# Real-Time Fraud Detection in Finance using Apache Spark, Kafka, and Power BI
+# Real-Time Fraud Detection in Finance (Apache Spark - Kafka - Power BI)
 
 ## Overview
 
@@ -9,23 +9,22 @@ All transaction data is simulated and does not represent real individuals or bus
 ---
 
 ## Project Goals
-
-1. **Simulate Real-Time Financial Transactions:**  
+- **Simulate Real-Time Financial Transactions:**  
   Generate realistic synthetic transaction data using `Faker`, covering users, merchants, transaction metadata, and potential fraud indicators.
 
-2. **Implement Streaming Architecture:**  
+- **Implement Streaming Architecture:**  
   Build a real-time data pipeline using **Kafka** to ingest continuous transaction streams and **Apache Spark Structured Streaming** for scalable processing.
 
-3. **Detect Fraudulent Behavior:**  
+- **Detect Fraudulent Behavior:**  
   Apply machine learning models with **PySpark MLlib** to detect anomalies and classify transactions as fraudulent or legitimate in near real-time.
 
-4. **Visualize Key Insights:**  
+- **Visualize Key Insights:**  
   Provide a dynamic **Power BI dashboard** showing fraud alerts, high-risk users or merchants, transaction heatmaps, and financial trends.
 
-5. **Orchestrate with Airflow:**  
+- **Orchestrate with Airflow:**  
   Automate model training, batch scoring, and data workflows using **Apache Airflow** to ensure reliability and retrainability.
 
-6. **Ensure Scalability & Reusability:**  
+- **Ensure Scalability & Reusability:**  
   Design the system to be cloud-agnostic and modular for future integration with platforms like AWS or GCP and tools like Snowflake or dbt.
 
 ---
@@ -71,29 +70,29 @@ Faker continuously generates streaming data that mimics:
 ## Data Model
 ### **Fact Table**
 1. **fact_transactions**
-  - transaction_id: Unique transaction ID
-  - user_id: Reference to the user making the transaction
-  - merchant_id: Reference to the merchant
-  - timestamp: Time of transaction
-  - amount: Transaction amount
-  - currency: Currency used
-  - device_ip: Device IP address
-  - is_fraud: Fraud label (true/false)
+- transaction_id: Unique transaction ID
+- user_id: Reference to the user making the transaction
+- merchant_id: Reference to the merchant
+- timestamp: Time of transaction
+- amount: Transaction amount
+- currency: Currency used
+- device_ip: Device IP address
+- is_fraud: Fraud label (true/false)
 
 ### **Dimension Tables**
 2. **dim_users**
-  - user_id: Unique user ID
-  - age: Age of user
-  - gender: Gender
-  - location: User location
-  - signup_date: User registration date
+- user_id: Unique user ID
+- age: Age of user
+- gender: Gender
+- location: User location
+- signup_date: User registration date
 
 3. **dim_merchants**
-  - merchant_id: Unique merchant ID
-  - name: Merchant name
-  - category: Business category
-  - location: Merchant location
-  - created_at: Merchant onboarding date
+- merchant_id: Unique merchant ID
+- name: Merchant name
+- category: Business category
+- location: Merchant location
+- created_at: Merchant onboarding date
 
 (ADD DIAGRAM)
 
