@@ -6,8 +6,6 @@ This project simulates a **real-time fraud detection pipeline** in the financial
 
 All transaction data is simulated and does not represent real individuals or businesses.
 
----
-
 ## Project Goals
 - **Simulate Real-Time Financial Transactions:**  
   Generate realistic synthetic transaction data using `Faker`, covering users, merchants, transaction metadata, and potential fraud indicators.
@@ -27,15 +25,11 @@ All transaction data is simulated and does not represent real individuals or bus
 - **Ensure Scalability & Reusability:**  
   Design the system to be cloud-agnostic and modular for future integration with platforms like AWS or GCP and tools like Snowflake or dbt.
 
----
-
 ## Architecture
 
 Faker → Kafka → Spark Structured Streaming → ML Model → Kafka or PostgreSQL → Power BI ↑ Airflow
 
 (ADD DIAGRAM)
-
----
 
 ## Technology Stack
 
@@ -48,8 +42,6 @@ Faker → Kafka → Spark Structured Streaming → ML Model → Kafka or Postgre
 | Workflow Orchestration | Apache Airflow         |
 | Data Storage      | Kafka Topic / PostgreSQL (optional) |
 | Visualization     | Power BI                   |
-
----
 
 ## Data Used
 
@@ -64,8 +56,6 @@ Faker continuously generates streaming data that mimics:
 - Timestamps and transaction metadata
 
 - Legitimate vs. fraudulent behavior patterns
-
----
 
 ## Data Model
 ### **Fact Table**
@@ -95,8 +85,6 @@ Faker continuously generates streaming data that mimics:
 - created_at: Merchant onboarding date
 
 (ADD DIAGRAM)
-
----
 
 ## Project Files
 
