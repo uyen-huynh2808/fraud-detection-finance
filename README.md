@@ -33,7 +33,7 @@ Faker → Kafka → Spark Structured Streaming → ML Model → Kafka or Postgre
 
 | Component         | Tool / Framework           |
 |------------------|----------------------------|
-| Data Generation   | [Faker](https://faker.readthedocs.io/)       |
+| Data Generation   | Faker      |
 | Messaging         | Apache Kafka               |
 | Streaming Engine  | Apache Spark (Structured Streaming) |
 | Machine Learning  | PySpark MLlib              |
