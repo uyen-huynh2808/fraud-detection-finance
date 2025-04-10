@@ -20,12 +20,9 @@ This project simulates a **real-time fraud detection pipeline** in the financial
 - **Orchestrate with Airflow:**  
   Automate model training, batch scoring, and data workflows using **Apache Airflow** to ensure reliability and retrainability.
 
-- **Ensure Scalability & Reusability:**  
-  Design the system to be cloud-agnostic and modular for future integration with platforms like AWS or GCP and tools like Snowflake or dbt.
-
 ## Architecture
 
-Faker → Kafka → Spark Structured Streaming → ML Model → Kafka or MySQL → Power BI ↑ Airflow
+Faker → Kafka → Spark Structured Streaming → ML Model → MySQL → Power BI ↑ Airflow
 
 (ADD DIAGRAM)
 
