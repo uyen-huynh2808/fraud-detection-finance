@@ -23,7 +23,9 @@ This project simulates a **real-time fraud detection pipeline** in the financial
 
 ## Architecture
 
-(ADD ARCHITECTURE DIAGRAM)
+![Architecture](https://github.com/user-attachments/assets/7bf25abe-665f-42e4-a015-d39458328d32)
+
+This architecture shows the end-to-end data flow for a real-time fraud detection pipeline using Faker for synthetic data, Kafka for ingestion, Spark for processing and ML, MySQL for storage, and Power BI for visualization. Airflow orchestrates the training and streaming workflows.
 
 ## Technology Stack
 
