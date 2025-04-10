@@ -5,6 +5,7 @@
 This project simulates a **real-time fraud detection pipeline** in the financial domain using a big data ecosystem. It generates synthetic transaction data using **Faker**, streams it through **Kafka**, processes it with **Apache Spark Structured Streaming**, detects fraud using a **PySpark ML model**, and visualizes suspicious activity in **Power BI**. The entire pipeline is orchestrated with **Airflow**.
 
 ## Project Goals
+
 - **Simulate Real-Time Financial Transactions:**  
   Generate realistic synthetic transaction data using `Faker`, covering users, merchants, transaction metadata, and potential fraud indicators.
 
@@ -22,94 +23,77 @@ This project simulates a **real-time fraud detection pipeline** in the financial
 
 ## Architecture
 
-Faker → Kafka → Spark Structured Streaming → ML Model → MySQL → Power BI ↑ Airflow
-
-(ADD DIAGRAM)
+(ADD ARCHITECTURE DIAGRAM)
 
 ## Technology Stack
 
-| Component         | Tool / Framework           |
-|------------------|----------------------------|
-| Data Generation   | Faker      |
-| Messaging         | Apache Kafka               |
-| Streaming Engine  | Apache Spark (Structured Streaming) |
-| Machine Learning  | PySpark MLlib              |
-| Workflow Orchestration | Apache Airflow         |
-| Data Storage      | MySQL |
-| Visualization     | Power BI                   |
+| Component              | Tool / Framework             |
+|------------------------|------------------------------|
+| Data Generation        | Faker                        |
+| Messaging              | Apache Kafka                 |
+| Streaming Engine       | Apache Spark (Structured Streaming) |
+| Machine Learning       | PySpark MLlib                |
+| Workflow Orchestration | Apache Airflow               |
+| Data Storage           | MySQL                        |
+| Visualization          | Power BI                     |
 
-For Data Storage, Kafka Topic can be used for real-time pipelines where downstream consumers subscribe to new fraud alerts immediately, with not need of Power BI reporting
+> **Note:** Kafka can be used for real-time consumers, but **Power BI works better with SQL-based storages like MySQL** for reporting and dashboarding.
+
 ## Data Used
 
-This project uses synthetic financial transaction data generated via the Faker Python library. The data simulates realistic behavior of users, merchants, and transactions — mimicking real-world online payment and banking activity — but does not include any actual private or sensitive user information.
+This project uses synthetic financial transaction data generated via the **Faker** Python library. The data simulates realistic behavior of users, merchants, and transactions — mimicking real-world online payment and banking activity — but does not include any actual private or sensitive user information.
 
 Faker continuously generates streaming data that mimics:
 
-- Customers making payments
-
-- Merchant identifiers
-
-- Timestamps and transaction metadata
-
-- Legitimate vs. fraudulent behavior patterns
+- Customers making payments  
+- Merchant identifiers  
+- Timestamps and transaction metadata  
+- Legitimate vs. fraudulent behavior patterns  
 
 ## Data Model
-### **Fact Table**
-1. **fact_transactions**
-- transaction_id: Unique transaction ID
-- user_id: Reference to the user making the transaction
-- merchant_id: Reference to the merchant
-- timestamp: Time of transaction
-- amount: Transaction amount
-- currency: Currency used
-- device_ip: Device IP address
-- is_fraud: Fraud label (true/false)
 
-### **Dimension Tables**
-2. **dim_users**
-- user_id: Unique user ID
-- age: Age of user
-- gender: Gender
-- location: User location
-- signup_date: User registration date
+### Fact Table
 
-3. **dim_merchants**
-- merchant_id: Unique merchant ID
-- name: Merchant name
-- category: Business category
-- location: Merchant location
-- created_at: Merchant onboarding date
+**fact_transactions**
+- `transaction_id`: Unique transaction ID  
+- `user_id`: Reference to the user making the transaction  
+- `merchant_id`: Reference to the merchant  
+- `timestamp`: Time of transaction  
+- `amount`: Transaction amount  
+- `currency`: Currency used  
+- `device_ip`: Device IP address  
+- `is_fraud`: Fraud label (true/false)  
 
-(ADD DIAGRAM)
+### Dimension Tables
+
+**dim_users**
+- `user_id`: Unique user ID  
+- `age`: Age of user  
+- `gender`: Gender  
+- `location`: User location  
+- `signup_date`: User registration date  
+
+**dim_merchants**
+- `merchant_id`: Unique merchant ID  
+- `name`: Merchant name  
+- `category`: Business category  
+- `location`: Merchant location  
+- `created_at`: Merchant onboarding date  
+
+(ADD ER DIAGRAM)
 
 ## Project Files
 
-1. `src/faker_producer.py` – Produces synthetic transaction data using Faker and streams it into Kafka.
-
-2. `config/kafka_config.json` – Kafka topic and broker configuration.
-
-3. `config/spark_config.yaml` – Spark app settings, including checkpointing and batch configs.
-
-4. `models/fraud_model.pkl` – Serialized trained PySpark model for reuse in streaming pipeline.
-
-5. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.
-
-6. `schema/mysql_schema.sql` – SQL script to create the `fact_transactions` and `dim_users` tables in MySQL.
-
-7. `src/train_model.py` – Script to train the fraud detection model using PySpark ML on historical (simulated) data.
-
-8. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.
-
-9. `dashboards/fraud_dashboard.pbix` – Power BI report to visualize fraud detection metrics and transaction activity.
+1. `src/faker_producer.py` – Produces synthetic transaction data using Faker and streams it into Kafka.  
+2. `config/kafka_config.json` – Kafka topic and broker configuration.  
+3. `config/spark_config.yaml` – Spark app settings, including checkpointing and batch configs.  
+4. `models/fraud_model.pkl` – Serialized trained PySpark model for reuse in streaming pipeline.  
+5. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.  
+6. `schema/mysql_schema.sql` – SQL script to create the `fact_transactions`, `dim_users`, and `dim_merchants` tables in MySQL.  
+7. `src/train_model.py` – Script to train the fraud detection model using PySpark ML on historical (simulated) data.  
+8. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.  
+9. `dashboards/fraud_dashboard.pbix` – Power BI report to visualize fraud detection metrics and transaction activity.  
 
 ## License
 
 This project is for educational and demo purposes only. All transaction data is artificially generated using Faker and does not represent any real individuals or businesses.
-
-------------------------------------
-
-
-
-
-
-
