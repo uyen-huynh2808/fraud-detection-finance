@@ -35,9 +35,10 @@ Faker → Kafka → Spark Structured Streaming → ML Model → MySQL → Power 
 | Streaming Engine  | Apache Spark (Structured Streaming) |
 | Machine Learning  | PySpark MLlib              |
 | Workflow Orchestration | Apache Airflow         |
-| Data Storage      | Kafka Topic / MySQL (optional) |
+| Data Storage      | MySQL |
 | Visualization     | Power BI                   |
 
+For Data Storage, Kafka Topic can be used for real-time pipelines where downstream consumers subscribe to new fraud alerts immediately, with not need of Power BI reporting
 ## Data Used
 
 This project uses synthetic financial transaction data generated via the Faker Python library. The data simulates realistic behavior of users, merchants, and transactions — mimicking real-world online payment and banking activity — but does not include any actual private or sensitive user information.
