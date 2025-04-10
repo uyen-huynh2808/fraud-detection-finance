@@ -25,7 +25,7 @@ This project simulates a **real-time fraud detection pipeline** in the financial
 
 ## Architecture
 
-Faker → Kafka → Spark Structured Streaming → ML Model → Kafka or PostgreSQL → Power BI ↑ Airflow
+Faker → Kafka → Spark Structured Streaming → ML Model → Kafka or MySQL → Power BI ↑ Airflow
 
 (ADD DIAGRAM)
 
@@ -38,7 +38,7 @@ Faker → Kafka → Spark Structured Streaming → ML Model → Kafka or Postgre
 | Streaming Engine  | Apache Spark (Structured Streaming) |
 | Machine Learning  | PySpark MLlib              |
 | Workflow Orchestration | Apache Airflow         |
-| Data Storage      | Kafka Topic / PostgreSQL (optional) |
+| Data Storage      | Kafka Topic / MySQL (optional) |
 | Visualization     | Power BI                   |
 
 ## Data Used
@@ -96,7 +96,7 @@ Faker continuously generates streaming data that mimics:
 
 5. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.
 
-6. `schema/postgres_schema.sql` – SQL script to create the `fact_transactions` and `dim_users` tables in MySQL.
+6. `schema/mysql_schema.sql` – SQL script to create the `fact_transactions` and `dim_users` tables in MySQL.
 
 7. `src/train_model.py` – Script to train the fraud detection model using PySpark ML on historical (simulated) data.
 
