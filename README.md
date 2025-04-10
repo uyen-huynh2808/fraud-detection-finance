@@ -88,19 +88,19 @@ Faker continuously generates streaming data that mimics:
 
 1. `src/faker_producer.py` – Produces synthetic transaction data using Faker and streams it into Kafka.
 
-2. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.
+2. `config/kafka_config.json` – Kafka topic and broker configuration.
 
-3. `src/train_model.py` – Script to train the fraud detection model using PySpark ML on historical (simulated) data.
+3. `config/spark_config.yaml` – Spark app settings, including checkpointing and batch configs.
 
-4. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.
+4. `models/fraud_model.pkl` – Serialized trained PySpark model for reuse in streaming pipeline.
 
-5. `models/fraud_model.pkl` – Serialized trained PySpark model for reuse in streaming pipeline.
+5. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.
 
-6. `config/kafka_config.json` – Kafka topic and broker configuration.
+6. `schema/postgres_schema.sql` – SQL script to create the `fact_transactions` and `dim_users` tables in MySQL.
 
-7. `config/spark_config.yaml` – Spark app settings, including checkpointing and batch configs.
+7. `src/train_model.py` – Script to train the fraud detection model using PySpark ML on historical (simulated) data.
 
-8. `schema/postgres_schema.sql` – SQL script to create the fact_transactions and dim_users tables in PostgreSQL.
+8. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.
 
 9. `dashboards/fraud_dashboard.pbix` – Power BI report to visualize fraud detection metrics and transaction activity.
 
