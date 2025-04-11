@@ -50,7 +50,10 @@ Faker continuously generates streaming data that mimics:
 - Customers making payments  
 - Merchant identifiers  
 - Timestamps and transaction metadata  
-- Legitimate vs. fraudulent behavior patterns  
+- Legitimate vs. fraudulent behavior patterns
+
+> **Note:**  
+> A batch of synthetic data (e.g., 50,000–100,000 rows) is generated offline using Faker and used to train the initial fraud detection model. This ensures the model has a labeled dataset with a balanced mix of legitimate and fraudulent transactions for accurate learning. Once deployed, the model can be periodically retrained using historical data collected from the real-time stream.
 
 ## Data Model
 
