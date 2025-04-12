@@ -86,10 +86,10 @@ Faker continuously generates streaming data that mimics:
 3. `src/faker_producer.py` – Produces synthetic transaction data using Faker and streams it into Kafka.  
 4. `config/kafka_config.json` – Kafka topic and broker configuration.  
 5. `config/spark_config.yaml` – Spark app settings, including checkpointing and batch configs.  
-6. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model. 
-7. `schema/mysql_schema.sql` – SQL script to create the `fact_transactions`, `dim_users`, and `dim_merchants` tables in MySQL. 
-8. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.  
-9. `dashboards/fraud_dashboard.pbix` – Power BI report to visualize fraud detection metrics and transaction activity.  
+6. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.
+7. `src/fraud_alert_producer.py` – Sends real-time fraud alerts to a dedicated Kafka alert topic when fraud is detected.
+8. `src/fraud_alert_consumer.py` – Consumes fraud alerts for downstream services (e.g., notifications, logging).  
+9. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.  
 
 ## License
 
