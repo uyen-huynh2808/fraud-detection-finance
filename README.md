@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project simulates a **real-time fraud detection pipeline** in the financial domain using a big data ecosystem. It generates synthetic transaction data using **Faker**, streams it through **Kafka**, processes it with **Apache Spark Structured Streaming**, detects fraud using a **PySpark ML model**, and visualizes suspicious activity in **Power BI**. The entire pipeline is orchestrated with **Airflow**.
+This project simulates a **real-time fraud detection and alerting pipeline** in the financial domain using a big data ecosystem. It generates synthetic transaction data using **Faker**, streams it through **Kafka**, processes it with **Apache Spark Structured Streaming**, and detects fraudulent activity using a **PySpark ML model**. When a suspicious transaction is identified, an alert message is sent to users in real-time through a **Kafka fraud alert topic**. The pipeline is fully automated and orchestrated using **Apache Airflow**, including periodic model retraining and deployment.
 
 ## Project Goals
 
@@ -15,17 +15,16 @@ This project simulates a **real-time fraud detection pipeline** in the financial
 - **Detect Fraudulent Behavior:**  
   Apply machine learning models with **PySpark MLlib** to detect anomalies and classify transactions as fraudulent or legitimate in near real-time.
 
-- **Visualize Key Insights:**  
-  Provide a dynamic **Power BI dashboard** showing fraud alerts, high-risk users or merchants, transaction heatmaps, and financial trends.
+- **Send Real-Time Fraud Alerts:**  
+  Deliver immediate fraud notifications to downstream services or users via a dedicated **Kafka alert topic**, enabling real-time response without relying on data storage or reporting tools.
 
 - **Orchestrate with Airflow:**  
-  Automate model training, batch scoring, and data workflows using **Apache Airflow** to ensure reliability and retrainability.
+  Automate model training, deployment, and streaming workflows using **Apache Airflow** to ensure scalability, maintainability, and periodic retraining.
 
 ## Architecture
 
 ![Architecture](https://github.com/user-attachments/assets/7bf25abe-665f-42e4-a015-d39458328d32)
 
-> This architecture shows the end-to-end data flow for a real-time fraud detection pipeline using Faker for synthetic data, Kafka for ingestion, Spark for processing and ML, MySQL for storage, and Power BI for visualization. Airflow orchestrates the training and streaming workflows.
 
 ## Technology Stack
 
@@ -36,10 +35,7 @@ This project simulates a **real-time fraud detection pipeline** in the financial
 | Streaming Engine       | Apache Spark (Structured Streaming) |
 | Machine Learning       | PySpark MLlib                |
 | Workflow Orchestration | Apache Airflow               |
-| Data Storage           | MySQL                        |
-| Visualization          | Power BI                     |
-
-> **Note:** Kafka can be used for real-time consumers, but **Power BI works better with SQL-based storages like MySQL** for reporting and dashboarding.
+| Real-Time Alerts       | Kafka Alert Topic            |
 
 ## Data Used
 
@@ -57,9 +53,9 @@ Faker continuously generates streaming data that mimics:
 
 ## Data Model
 
-### Fact Table
+### Kafka Topics (Streamed Data)
 
-**fact_transactions**
+**transaction_stream**  
 - `transaction_id`: Unique transaction ID  
 - `user_id`: Reference to the user making the transaction  
 - `merchant_id`: Reference to the merchant  
@@ -69,23 +65,19 @@ Faker continuously generates streaming data that mimics:
 - `device_ip`: Device IP address  
 - `is_fraud`: Fraud label (true/false)  
 
-### Dimension Tables
-
-**dim_users**
+**user_info_stream**  
 - `user_id`: Unique user ID  
 - `age`: Age of user  
 - `gender`: Gender  
 - `location`: User location  
 - `signup_date`: User registration date  
 
-**dim_merchants**
+**merchant_info_stream**  
 - `merchant_id`: Unique merchant ID  
 - `name`: Merchant name  
 - `category`: Business category  
 - `location`: Merchant location  
 - `created_at`: Merchant onboarding date  
-
-(ADD ER DIAGRAM)
 
 ## Project Files
 
