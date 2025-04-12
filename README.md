@@ -23,8 +23,9 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 
 ## Architecture
 
-![Architecture](https://github.com/user-attachments/assets/64422b40-c5a6-4282-bc41-ce8c5d5968c8)
+![Architecture](https://github.com/user-attachments/assets/c9d5fcc9-ea5d-4779-836f-74262f9645a3)
 
+> **Note:**  In the streaming pipeline, **Spark MLlib only loads and applies the pre-trained model** — it does **not** retrain it in real-time.
 
 ## Technology Stack
 
