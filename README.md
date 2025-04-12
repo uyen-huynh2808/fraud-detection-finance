@@ -23,7 +23,7 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 
 ## Architecture
 
-![Architecture](https://github.com/user-attachments/assets/7bf25abe-665f-42e4-a015-d39458328d32)
+![Architecture](https://github.com/user-attachments/assets/64422b40-c5a6-4282-bc41-ce8c5d5968c8)
 
 
 ## Technology Stack
