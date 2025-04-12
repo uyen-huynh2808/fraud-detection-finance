@@ -93,8 +93,8 @@ Faker continuously generates streaming data that mimics:
 6. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.
 7. `src/fraud_alert_producer.py` – Sends real-time fraud alerts to a dedicated Kafka alert topic when fraud is detected.
 8. `src/fraud_alert_consumer.py` – Subscribes to the alert topic and:
-  - Logs alert in terminal (for testing/demo).
-  - Sends email to a configured user (for realism).
+    - Logs alert in terminal (for testing/demo).
+    - Sends email to a configured user (for realism).
 9. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.  
 
 ## License
