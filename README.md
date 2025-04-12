@@ -1,4 +1,4 @@
-# Real-Time Fraud Detection in Finance (Apache Spark - Apache Kafka - Power BI)
+# Real-Time Fraud Detection in Finance (Apache Spark - Apache Kafka - PySpark MLlib)
 
 ## Overview
 
