@@ -95,7 +95,8 @@ Faker continuously generates streaming data that mimics:
 8. `src/fraud_alert_consumer.py` – Subscribes to the alert topic and:
     - Logs alert in terminal (for testing/demo).
     - Sends email to a configured user (for realism).
-9. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.  
+9. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.
+10. `notebooks/getting_started.ipynb` – Interactive notebook for setting up environment, installing dependencies, and running the pipeline
 
 ## License
 
