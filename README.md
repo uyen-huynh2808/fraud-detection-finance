@@ -96,7 +96,7 @@ Faker continuously generates streaming data that mimics:
     - Logs alert in terminal (for testing/demo).
     - Sends email to a configured user (for realism).
 9. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.
-10. `notebooks/getting_started_pipeline_walkthrough.ipynb` – Interactive guide for setting up the environment, installing dependencies, and executing key components of the real-time fraud detection pipeline.
+10. `notebooks/pipeline_walkthrough.ipynb` – Interactive guide for executing key components of the real-time fraud detection pipeline.
 ## License
 
 This project is for educational and demo purposes only. All transaction data is artificially generated using Faker and does not represent any real individuals or businesses.
