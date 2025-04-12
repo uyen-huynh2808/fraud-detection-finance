@@ -25,8 +25,8 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 
 ![Architecture](https://github.com/user-attachments/assets/c9d5fcc9-ea5d-4779-836f-74262f9645a3)
 
-> **Note:**
-> The **ML model** used in fraud detection is **trained offline** (once or periodically) using historical synthetic data and saved as a serialized file (`fraud_model.pkl`).
+> **Note:**   
+> The **ML model** used in fraud detection is **trained offline** (once or periodically) using historical synthetic data and saved as a serialized file (`fraud_model.pkl`).   
 > In the streaming pipeline, **Spark MLlib only loads and applies the pre-trained model** — it does **not** retrain it in real-time.
 
 ## Technology Stack
