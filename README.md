@@ -26,9 +26,9 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 ![Architecture](https://github.com/user-attachments/assets/c9d5fcc9-ea5d-4779-836f-74262f9645a3)
 
 > **Note:**  
-> The **ML model** used in fraud detection is **trained offline on a weekly basis** using historical synthetic data, with automation handled by **Apache Airflow**.  
-> The trained model is saved as a serialized file (`fraud_model.pkl`) and used in the real-time pipeline.  
-> In streaming, **Spark MLlib only loads and applies the latest pre-trained model** — it does **not** retrain the model in real-time.
+> - The **ML model** used in fraud detection is **trained offline on a weekly basis** using historical synthetic data, with automation handled by **Apache Airflow**.  
+> - The trained model is saved as a serialized file (`fraud_model.pkl`) and used in the real-time pipeline.  
+> - In streaming, **Spark MLlib only loads and applies the latest pre-trained model** — it does **not** retrain the model in real-time.
 
 ## Technology Stack
 
@@ -80,9 +80,9 @@ Each message published to this topic represents a **simulated financial transact
 | `is_fraud`         | INTEGER  | Fraud label (1 = fraudulent, 0 = normal); used for training/testing         |
 
 > **Notes:**  
-> This is a **flat message schema**, combining transaction, user, and device context in one payload.
-> `user_id` and `merchant_id` are designed to support future relational joins (e.g., with `user_info_stream` and `merchant_info_stream` if modeled later).
-> The `is_fraud` field is primarily for training/testing and may be excluded in real-time fraud inference use cases.
+> - This is a **flat message schema**, combining transaction, user, and device context in one payload.
+> - `user_id` and `merchant_id` are designed to support future relational joins (e.g., with `user_info_stream` and `merchant_info_stream` if modeled later).
+> - The `is_fraud` field is primarily for training/testing and may be excluded in real-time fraud inference use cases.
 
 ## Project Files
 
