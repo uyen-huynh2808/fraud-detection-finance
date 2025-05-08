@@ -19,7 +19,7 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
   Deliver instant fraud notifications to downstream services or users through a dedicated **Kafka alert topic** by sending emails, allowing for real-time response without the need for data storage or reporting tools.
 
 - **Orchestrate with Airflow:**  
-  Automate model training, deployment, and streaming workflows using Apache Airflow, ensuring scalability, maintainability, and weekly retraining.
+  Automate model training and deployment using Apache Airflow, ensuring scalability, maintainability, and weekly retraining.
 
 ## Architecture
 
