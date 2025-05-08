@@ -26,7 +26,7 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 ![Architecture](https://github.com/user-attachments/assets/c9d5fcc9-ea5d-4779-836f-74262f9645a3)
 
 > **Note:**  
-> - The **ML model** used in fraud detection is **trained offline on a weekly basis** using historical synthetic data, with automation handled by **Apache Airflow**.  
+> - The **ML model** used in fraud detection is **trained offline on a daily basis** using historical synthetic data, with automation handled by **Apache Airflow**.  
 > - The trained model is saved as a serialized file (`fraud_model.pkl`) and used in the real-time pipeline.  
 > - In streaming, **Spark ML only loads and applies the latest pre-trained model** — it does **not** retrain the model in real-time.
 
