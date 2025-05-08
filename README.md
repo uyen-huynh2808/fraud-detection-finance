@@ -43,14 +43,17 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 
 ## Data Used
 
-This project uses synthetic financial transaction data generated via the **Faker** Python library. The data simulates realistic behavior of users, merchants, and transactions — mimicking real-world online payment and banking activity — but does not include any actual private or sensitive user information.
+This project uses synthetic financial transaction data generated via the Faker Python library. The data simulates realistic behavior of users, merchants, and transactions — mimicking real-world online payment and banking activity — but does not include any actual private or sensitive user information.
 
 Faker continuously generates streaming data that mimics:
 
-- Customers making payments  
-- Merchant identifiers  
-- Timestamps and transaction metadata  
-- Legitimate vs. fraudulent behavior patterns
+- Customers making payments
+
+- Merchant identifiers
+
+- Risk-related metadata: age, gender, VPN/proxy usage, international flag
+
+- Transaction characteristics: amount, transaction hour, location and device scores
 
 > **Note:**  
 > A batch of synthetic data (e.g., 50,000–100,000 rows) is generated offline using Faker and used to train the initial fraud detection model. This ensures the model has a labeled dataset with a balanced mix of legitimate and fraudulent transactions for accurate learning. Once deployed, the model can be periodically retrained using historical data collected from the real-time stream.
