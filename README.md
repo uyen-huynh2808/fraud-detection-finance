@@ -84,6 +84,39 @@ Each message published to this topic represents a **simulated financial transact
 > - `user_id` and `merchant_id` are designed to support future relational joins (e.g., with `user_info_stream` and `merchant_info_stream` if modeled later).
 > - The `is_fraud` field is primarily for training/testing and may be excluded in real-time fraud inference use cases.
 
+### Kafka Topic: `predictions`
+
+This Kafka topic is used to publish fraud detection model predictions. It includes transaction data along with the predicted fraud label.
+
+**Schema Fields**
+
+| Field              | Type     | Description                                                                 |
+|--------------------|----------|-----------------------------------------------------------------------------|
+| `transaction_id`    | STRING   | Unique identifier for each transaction (`fake.uuid4()`)                     |
+| `user_id`           | STRING   | Simulated user ID (`fake.uuid4()`)                                          |
+| `merchant_id`       | STRING   | Simulated merchant ID (`fake.uuid4()`)                                      |
+| `amount`            | DOUBLE   | Transaction amount in USD (range: 5 to 2000)                                |
+| `age`               | INTEGER  | User age (range: 18–70)                                                     |
+| `gender`            | INTEGER  | Encoded gender (0 = female, 1 = male)                                       |
+| `location_score`    | DOUBLE   | Score indicating the user's geographic risk (range: 0.0–1.0)                |
+| `transaction_hour`  | INTEGER  | Hour of the day the transaction occurs (0–23)                               |
+| `device_score`      | DOUBLE   | Trustworthiness of the device (range: 0.0–1.0)                              |
+| `prediction`   | INTEGER  | Fraud prediction: 1 = fraud, 0 = not fraud  
+
+### Kafka Topic: `alerts`
+
+This Kafka topic is used to publish alerts when a fraud is detected. If a fraud is predicted, an alert message is sent to this topic.
+
+**Schema Fields**
+
+| Field              | Type     | Description                                                                 |
+|--------------------|----------|-----------------------------------------------------------------------------|
+| `transaction_id`    | STRING   | Unique identifier for each transaction (`fake.uuid4()`)                     |
+| `user_id`           | STRING   | Simulated user ID (`fake.uuid4()`)                                          |
+| `merchant_id`       | STRING   | Simulated merchant ID (`fake.uuid4()`)                                      |
+| `amount`            | DOUBLE   | Transaction amount in USD (range: 5 to 2000)                                |
+| `alert`             | STRING   | Fraud alert message (e.g., "FRAUD DETECTED")                               
+
 ## Project Files
 
 1. `config/kafka_config.json` – Kafka topic and broker configuration.  
