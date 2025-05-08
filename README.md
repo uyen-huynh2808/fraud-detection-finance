@@ -1,4 +1,4 @@
-# Real-Time Fraud Detection in Finance (Apache Spark - Apache Kafka - PySpark MLlib)
+# Real-Time Fraud Detection in Finance (Apache Spark - Apache Kafka - PySpark ML)
 
 ## Overview
 
@@ -13,7 +13,7 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
   Build a real-time data pipeline using **Kafka** to ingest continuous transaction streams and **Apache Spark Structured Streaming** for scalable processing.
 
 - **Detect Fraudulent Behavior:**  
-  Apply machine learning models with **PySpark MLlib** to detect anomalies and classify transactions as fraudulent or legitimate in near real-time.
+  Apply machine learning models with **PySpark ML** to detect anomalies and classify transactions as fraudulent or legitimate in near real-time.
 
 - **Send Real-Time Fraud Alerts:**  
   Deliver instant fraud notifications to downstream services or users through a dedicated **Kafka alert topic** by sending emails, allowing for real-time response without the need for data storage or reporting tools.
@@ -28,7 +28,7 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 > **Note:**  
 > - The **ML model** used in fraud detection is **trained offline on a weekly basis** using historical synthetic data, with automation handled by **Apache Airflow**.  
 > - The trained model is saved as a serialized file (`fraud_model.pkl`) and used in the real-time pipeline.  
-> - In streaming, **Spark MLlib only loads and applies the latest pre-trained model** — it does **not** retrain the model in real-time.
+> - In streaming, **Spark ML only loads and applies the latest pre-trained model** — it does **not** retrain the model in real-time.
 
 ## Technology Stack
 
@@ -37,7 +37,7 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 | Data Generation        | Faker                        |
 | Messaging              | Apache Kafka                 |
 | Streaming Engine       | Apache Spark (Structured Streaming) |
-| Machine Learning       | PySpark MLlib                |
+| Machine Learning       | PySpark ML                |
 | Workflow Orchestration | Apache Airflow               |
 | Real-Time Alerts       | Kafka Alert Topic            |
 
