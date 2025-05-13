@@ -1,0 +1,6 @@
+{
+  "brokers": ["localhost:9092"],
+  "transactions": "transactions",
+  "predictions": "predictions",
+  "alerts": "alerts"
+}
