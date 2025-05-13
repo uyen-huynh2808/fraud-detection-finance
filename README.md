@@ -126,15 +126,14 @@ This Kafka topic is used to publish alerts when a fraud is detected. If a fraud 
 2. `config/spark_config.yaml` – Spark app settings, including checkpointing and batch configs. 
 3. `src/train_model.py` – Script to train the fraud detection model using PySpark ML on historical (simulated) data.  
 4. `models/fraud_model.pkl` – Serialized trained PySpark model for reuse in streaming pipeline.
-5. `data/historical_transactions.parquet` - The source of historical transaction data for model training and evaluation.
-6. `src/faker_producer.py` – Produces synthetic transaction data using Faker and streams it into Kafka.   
-7. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.
-8. `src/fraud_alert_producer.py` – Sends real-time fraud alerts to a dedicated Kafka alert topic when fraud is detected.
-9. `src/fraud_alert_consumer.py` – Subscribes to the alert topic and:
+5. `src/faker_producer.py` – Produces synthetic transaction data using Faker and streams it into Kafka.   
+6. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.
+7. `src/fraud_alert_producer.py` – Sends real-time fraud alerts to a dedicated Kafka alert topic when fraud is detected.
+8. `src/fraud_alert_consumer.py` – Subscribes to the alert topic and:
     - Logs alert in terminal (for testing/demo).
     - Sends email to a configured user (for realism).
-10. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.
-11. `notebooks/pipeline_walkthrough.ipynb` – Interactive guide for executing key components of the real-time fraud detection pipeline.
+9. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.
+10. `notebooks/pipeline_walkthrough.ipynb` – Interactive guide for executing key components of the real-time fraud detection pipeline.
 
 ## License
 
