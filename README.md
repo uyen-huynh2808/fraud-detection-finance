@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project simulates a **real-time fraud detection and alerting pipeline** in the financial domain using a big data ecosystem. It generates synthetic transaction data using **Faker**, streams it through **Kafka**, processes it with **Apache Spark Structured Streaming**, and detects fraudulent activity using a **PySpark ML model**. When a suspicious transaction is identified, an alert message is sent to users in real-time through a **Kafka fraud alert topic**. The pipeline is fully automated and orchestrated using **Apache Airflow**, including periodic model retraining and deployment.
+This project simulates a **real-time fraud detection and alerting pipeline** in the financial domain using a big data ecosystem. It generates synthetic transaction data using **Faker**, streams it through **Kafka**, processes it with **Apache Spark Structured Streaming**, and detects fraudulent activity using a **PySpark ML model**. When a suspicious transaction is identified, an alert message is sent to users in real-time through a **Kafka fraud alert topic**. The pipeline is fully automated: real-time data is ingested and processed using **Kafka** and **Spark**, while **Apache Airflow** is used to orchestrate periodic model retraining.
 
 ## Project Goals
 
@@ -38,7 +38,7 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 | Messaging              | Apache Kafka                 |
 | Streaming Engine       | Apache Spark (Structured Streaming) |
 | Machine Learning       | PySpark ML                |
-| Workflow Orchestration | Apache Airflow               |
+| Model Retraining Orchestration | Apache Airflow               |
 | Real-Time Alerts       | Kafka Alert Topic            |
 
 ## Data Used
