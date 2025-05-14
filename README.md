@@ -23,7 +23,7 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 
 ## Architecture
 
-![Architecture](https://github.com/user-attachments/assets/5bf2ab1e-8123-4665-9313-dbea1cafa826)
+![Architecture](https://github.com/user-attachments/assets/51506e72-e46f-4f23-9cff-ebe44ca4f234)
 
 > **Note:**  
 > - The **ML model** used in fraud detection is **trained offline on a daily basis** using historical synthetic data, with automation handled by **Apache Airflow**.  
