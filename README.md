@@ -138,3 +138,17 @@ This Kafka topic is used to publish alerts when a fraud is detected. If a fraud 
 ## License
 
 This project is for educational and demo purposes only. All transaction data is artificially generated using Faker and does not represent any real individuals or businesses.
+
+## Conclusion
+
+- This project demonstrates a fully integrated, real-time fraud detection pipeline using Apache Kafka, Apache Spark Structured Streaming, and PySpark ML.
+
+- Synthetic financial transactions are generated using Faker, streamed via Kafka, and evaluated in real-time using a pre-trained machine learning model.
+
+- Detected frauds are immediately communicated through a Kafka alert topic, with optional email notifications for end-user visibility.
+
+- Apache Airflow automates daily retraining of the model, ensuring the system adapts to new fraud patterns over time.
+
+- The architecture showcases key data engineering skills in streaming, orchestration, ML integration, and alerting—forming a robust blueprint for real-world fintech use cases.
+
+----
