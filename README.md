@@ -25,10 +25,11 @@ This project simulates a **real-time fraud detection and alerting pipeline** in 
 
 ![Architecture](https://github.com/user-attachments/assets/51506e72-e46f-4f23-9cff-ebe44ca4f234)
 
-> **Note:**  
-> - The **ML model** used in fraud detection is **trained offline on a daily basis** using historical synthetic data, with automation handled by **Apache Airflow**.  
-> - The trained model is saved as a serialized file (`fraud_model.pkl`) and used in the real-time pipeline.  
-> - In streaming, **Spark ML only loads and applies the latest pre-trained model** — it does **not** retrain the model in real-time.
+> **Note:**
+> - The fraud detection model is retrained daily using historical data plus 100,000 new synthetic records generated with Faker.
+> - Retraining is automated with Apache Airflow, and the updated model is saved as `fraud_model.pkl`.
+> - After each retraining, the used data is added to the historical dataset for future training.
+> - In streaming, Spark ML only loads and applies the latest model — it does not retrain in real time.
 
 ## Technology Stack
 
@@ -56,7 +57,7 @@ Faker continuously generates streaming data that mimics:
 - Transaction characteristics: amount, transaction hour, location and device scores
 
 > **Note:**  
-> A batch of synthetic data (e.g., 50,000–100,000 rows) is generated offline using Faker and used to train the initial fraud detection model. This ensures the model has a labeled dataset with a balanced mix of legitimate and fraudulent transactions for accurate learning. Once deployed, the model can be periodically retrained using historical data collected from the real-time stream.
+> Each day, 100,000 new synthetic transactions (balanced for fraud and legitimate cases) are generated and combined with stored historical data to train the model with PySpark ML. The combined dataset is then archived as historical data for the next retraining cycle.
 
 ## Data Model
 
@@ -124,7 +125,7 @@ This Kafka topic is used to publish alerts when a fraud is detected. If a fraud 
 
 1. `config/kafka_config.json` – Kafka topic and broker configuration.  
 2. `config/spark_config.yaml` – Spark app settings, including checkpointing and batch configs. 
-3. `src/train_model.py` – Script to train the fraud detection model using PySpark ML on historical (simulated) data.  
+3. `src/train_model.py` – Train the model with historical + 100,000 new records, saves it, and updates historical data.  
 4. `models/fraud_model.pkl` – Serialized trained PySpark model for reuse in streaming pipeline.
 5. `src/faker_producer.py` – Produces synthetic transaction data using Faker and streams it into Kafka.   
 6. `src/fraud_detection_stream.py` – Spark Structured Streaming pipeline to detect fraud in real-time using ML model.
