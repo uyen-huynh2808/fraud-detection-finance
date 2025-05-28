@@ -134,7 +134,7 @@ This Kafka topic is used to publish alerts when a fraud is detected. If a fraud 
     - Logs alert in terminal (for testing/demo).
     - Sends email to a configured user (for realism).
 9. `dags/training_pipeline.py` – Airflow DAG to automate periodic retraining and deployment of the model.
-10. `notebooks/pipeline_walkthrough.md` – Interactive guide for executing key components of the real-time fraud detection pipeline.
+10. `notebooks/pipeline_walkthrough.ipynb` – Interactive guide for executing key components of the real-time fraud detection pipeline.
 
 ## License
 
