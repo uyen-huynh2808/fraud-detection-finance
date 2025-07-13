@@ -140,16 +140,27 @@ This Kafka topic is used to publish alerts when a fraud is detected. If a fraud 
 
 This project is for educational and demo purposes only. All transaction data is artificially generated using Faker and does not represent any real individuals or businesses.
 
+## Limitations
+- Synthetic Data Only: Faker-generated data lacks real-world fraud complexity and noise.
+- Static Model in Streaming: The model is not updated in real-time, risking performance degradation (model drift).
+- Basic Features: Limited feature set without user history or behavioral patterns.
+- No Production Monitoring: No tracking of model performance or alert delivery effectiveness.
+- Alerting Is Minimal: Alerts are limited to Kafka and email, with no dashboard or third-party integration.
+
+## Future Developments
+- Use Real or Enriched Data: Incorporate real or anonymized public datasets for realism.
+- Add Model Monitoring: Integrate tools like MLflow or Prometheus for live performance tracking.
+- Enhance Features: Include user transaction history, merchant reputation, and geolocation analytics.
+- Enable Real-Time Dashboards: Stream results to Looker Studio, Superset, or Grafana for live insights.
+- Expand Alerting Channels: Add Slack, SMS, or webhook alerts for realistic fraud response simulation.
+- Governance & Security: Integrate Atlas/Ranger for lineage and access control in future extensions.
+
 ## Conclusion
 
 - This project demonstrates a fully integrated, real-time fraud detection pipeline using Apache Kafka, Apache Spark Structured Streaming, and PySpark ML.
-
 - Synthetic financial transactions are generated using Faker, streamed via Kafka, and evaluated in real-time using a pre-trained machine learning model.
-
 - Detected frauds are immediately communicated through a Kafka alert topic, with optional email notifications for end-user visibility.
-
 - Apache Airflow automates daily retraining of the model, ensuring the system adapts to new fraud patterns over time.
-
 - The architecture showcases key data engineering skills in streaming, orchestration, ML integration, and alerting—forming a robust blueprint for real-world fintech use cases.
 
 ----
