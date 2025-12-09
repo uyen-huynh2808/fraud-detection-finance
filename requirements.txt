@@ -1,0 +1,21 @@
+# --- Data Generation ---
+Faker>=20.0.0
+
+# --- Big Data Processing (Spark) ---
+# Note: PySpark requires Java 8, 11, or 17 installed on the system
+pyspark==3.5.0
+numpy<2.0.0
+# Note: Pinned to <2.0.0 to avoid compatibility issues between PySpark and NumPy 2.x
+
+# --- Kafka Client for Python ---
+# Used for standalone Python Producer and Consumer scripts (faker_producer.py, fraud_alert_consumer.py)
+kafka-python>=2.0.2
+
+# --- Alerting & Environment ---
+sendgrid>=6.10.0
+python-dotenv>=1.0.0
+
+# --- Orchestration (Airflow) ---
+# Note: If you are running Airflow via Docker, you do not need to install this locally.
+# Uncomment the line below only if you want to run Airflow directly on this machine:
+# apache-airflow>=2.8.0
